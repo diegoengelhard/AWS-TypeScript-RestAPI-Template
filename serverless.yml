@@ -1,5 +1,5 @@
 # service name
-service: serverless-todo-api
+service: serverless-api
 
 # framework version
 frameworkVersion: '2'
