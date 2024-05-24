@@ -1,0 +1,27 @@
+{
+  "name": "ts-aws-restapi-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@middy/core": "^5.3.5",
+    "@middy/http-json-body-parser": "^5.3.5",
+    "aws-sdk": "^2.1628.0",
+    "serverless": "^3.38.0",
+    "serverless-plugin-typescript": "^2.1.5",
+    "uuid": "^9.0.1",
+    "yup": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.138",
+    "@types/node": "^20.12.12",
+    "@types/uuid": "^9.0.8",
+    "typescript": "^5.4.5"
+  }
+}

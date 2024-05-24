@@ -1,0 +1,48 @@
+# service name
+service: serverless-todo-api
+
+# framework version
+frameworkVersion: '2'
+
+# provider
+provider:
+  name: aws
+  runtime: nodejs18.x
+  lambdaHashingVersion: '20201221'
+  region: us-west-2
+  # AWS IAM role permissions
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:*
+          Resource:
+            - { "Fn::GetAtt": ["TasksTable", "Arn"] } # rename DynamoDB table name
+
+# functions
+functions:
+  hello: # function name
+    handler: src/hello.hello # path to the handler function
+    events:
+      - httpApi:
+          path: /api/hello 
+          method: get
+
+# resources
+# resources:
+#   Resources: # defines the resources that will be created in the AWS account
+#     # Define the DynamoDB table(s)
+#     TasksTable: # products table
+#       Type: AWS::DynamoDB::Table # type of resource = DynamoDB table
+#       Properties:
+#         TableName: TasksTable # name of the table
+#         AttributeDefinitions: # defines the attributes of the table
+#           - AttributeName: id 
+#             AttributeType: S # type of the attribute (String)
+#         KeySchema:
+#           - AttributeName: id # primary key
+#             KeyType: HASH # type of partition key 
+#         ProvisionedThroughput:
+#           ReadCapacityUnits: 1
+#           WriteCapacityUnits: 1
